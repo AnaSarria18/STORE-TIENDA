@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{% endblock %}
+
+{% block contenido %}
+    <div class="frmlogin mt-3" style="margin: 0 auto">
+        <h3 class="text-center fw-bold">INICIAR SESIÓN</h3>
+        <form action="/" method="post" class="w-75" style="margin: 0 auto">
+            <div class="mb-3">
+                <label for="txtUsuario" class="fw-bold">Usuario:</label>
+                <input type="text" name="usuario" id="txtUsuario" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="txtContrasena" class="fw-bold">Contraseña:</label>
+                <input type="password" name="contrasena" id="txtContrasena" class="form-control" required>
+            </div>
+            <div>
+                <button class="btn btn-success">Ingresar</button>
+                <a href="/"><button type="button" class="btn btn-secondary">Cancelar</button></a>
+            </div>
+            <br>
+        </form>
+        {% if mensaje %} 
+            <script>
+                Swal.fire("Ingresar al sistema", '{{mensaje}}', "info");
+            </script>
+        {% endif %}
+    </div>
+{% endblock %}
+
