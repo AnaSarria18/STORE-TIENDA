@@ -1,33 +1,27 @@
 from flask import Flask
-import pymongo
 from flask_cors import CORS
-#crear objeto de tipo flask
+import pymongo
+import pymongo.errors
+
+
 app = Flask(__name__)
 CORS(app)
+app.secret_key = '1058964416'  
+app.config['UPLOAD_FOLDER'] = './static/imagenes'
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
-#secrret key
-app.secret_key="sdsadasd233242"
-
-#crear configurtación de carpeta donde se van a guardar las imagenes
-app.config['UPLOAD_FOLDER']='./static/imagenes'
-
-#crear el objeto que se conecta a la base de datos
-miConexion = pymongo.MongoClient("mongodb://localhost:27017")
-
-#crear un objeto que representa la base de datos de mongo
-baseDatos = miConexion['Tienda']
-
-#crear un objeto que representa la colección de la base de datos
-productos = baseDatos['producto']
-
-#crear objeto que representa la colección usuarios
-usuarios = baseDatos['Usuarios']
+miconexion = pymongo.MongoClient('mongodb+srv://maria:ana123@cluster0.q92cait.mongodb.net/Tienda?retryWrites=true&w=majority&appName=Cluster0')
+baseDatos = miconexion["Tienda"]
+usuarios = baseDatos["usuario"]
+productos = baseDatos["producto"]
 
 
-items_collection = productos
-if __name__=="__main__":
-    from controlador.productoController import *
-    from controlador.usuarioController import * 
-    app.run(port=5000,debug=True)
-    
-    
+if __name__ == "__main__":
+    from controllers.usuarioController  import *
+    from controllers.productosController import *
+    app.run(port=5000, debug=True)
+
+
+""" el usuario y la contraseña para poder ingresar son ; 
+usuario: ana
+contraseña: 12345 """

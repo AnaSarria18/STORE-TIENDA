@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/STORE-TIENDA/TIENDA/static/css/app.css">
+</head>
+<body>
+    <div class="contenedor">
+        <nav>
+            {% block navegar %}
+            {% endblock %}
+        </nav>
+        <section>
+            {% block contenido %}
+            {% endblock %}
+        </section>
+
+    </div>
+</body>
+</html>
